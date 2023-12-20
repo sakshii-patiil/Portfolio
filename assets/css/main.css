@@ -72,6 +72,16 @@ input, select, textarea {
 	appearance: none;
 }
 
+/*-------hover-------------*/
+#s2r2:hover {
+	content: url("images/s2r2intenship.png");
+ } 
+ #eqw:hover {
+	content: url("images/eqw.png");
+ } 
+ #gdsc:hover {
+	content: url("images/gdsc.png");
+ } 
 /* Basic */
 
 	@-ms-viewport {
@@ -2649,8 +2659,10 @@ input, select, textarea {
 				content: '';
 				width: 3.25em;
 				height: 2px;
-				margin: 0.7em 0 1em 0;
+				margin-left: auto;
+				margin-right: auto;
 				border-radius: 2px;
+				
 			}
 
 				section.special header.major h2:after, article.special header.major h2:after {
