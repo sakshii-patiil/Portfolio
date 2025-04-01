@@ -1,4 +1,672 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sakshi Patil - Network Engineer Portfolio</title>
+    <style>
+        :root {
+            --primary: #0a4d68;
+            --secondary: #0e2433;
+            --light: #f5f7fa;
+            --dark: #172b4d;
+            --accent: #00b7c2;
+            --accent-light: #5ce1e6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0;
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .network-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(14, 36, 51, 0.8);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .network-node {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-light);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-light);
+        }
+        
+        .network-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(92,225,230,0) 0%, rgba(92,225,230,0.5) 50%, rgba(92,225,230,0) 100%);
+            animation: pulse 4s infinite;
+            transform-origin: left center;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.2; }
+        }
+        
+        .cta-button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 183, 194, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: #008a99;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 183, 194, 0.4);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            background-color: var(--primary);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            flex-shrink: 0;
+            box-shadow: 0 10px 20px rgba(10, 77, 104, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='1' d='M10,10 L90,10 L90,90 L10,90 Z'%3E%3C/path%3E%3Ccircle cx='10' cy='10' r='3' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='90' cy='10' r='3' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='10' cy='90' r='3' fill='rgba(255,255,255,0.2)'/%3E%3Ccircle cx='90' cy='90' r='3' fill='rgba(255,255,255,0.2)'/%3E%3Cpath fill='none' stroke='rgba(255,255,255,0.1)' stroke-width='1' d='M10,10 L90,90 M90,10 L10,90'%3E%3C/path%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+        
+        .about-content {
+            flex-grow: 1;
+        }
+        
+        .about-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .skills-container {
+            margin-top: 3rem;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .skill-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .experience-grid, .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .experience-item, .project-item, .education-item {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .experience-item:hover, .project-item:hover, .education-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .experience-title, .project-title, .education-degree {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-company, .project-date, .education-university {
+            font-weight: 500;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .experience-date, .education-date {
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background-color: rgba(0, 183, 194, 0.1);
+            border-radius: 20px;
+        }
+        
+        ul.experience-details, ul.project-details {
+            padding-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        ul.experience-details li, ul.project-details li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .project-link:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .project-link-icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+        
+        .contact-item h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+        
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .experience-grid, .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="network-bg" id="network-animation">
+            <!-- Network nodes and lines will be added by JavaScript -->
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Sakshi Swapnil Patil</h1>
+            <p class="hero-subtitle">Network Engineer | AI Developer | Computer Engineering Graduate</p>
+            <a href="#about" class="cta-button">Explore My Work</a>
+        </div>
+    </div>
+    
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="profile-container">
+                <div class="profile-image">SP</div>
+                <div class="about-content">
+                    <p>A highly motivated network engineer and graduate student in Computer Engineering with hands-on internship experience in research and development across embedded systems and artificial intelligence. Proficient in designing and implementing both hardware and software solutions, with a strong foundation in networking and software development.</p>
+                    <p>My expertise spans TCP/IP networking, traffic analysis, protocol optimization, and IoT implementations. I specialize in building network monitoring solutions and implementing AI-powered systems for real-world applications.</p>
+                    <p>Currently pursuing CCNA certification and actively seeking an internship in the wireless networks domain. Based in Tempe, AZ at Arizona State University's Ira A. Fulton Schools of Engineering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">🖧</div>
+                        <h3>Network Infrastructure</h3>
+                        <p>Linux, Wireshark, Packet Tracer, TCP/IP, VLAN configuration, topology mapping</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🗄️</div>
+                        <h3>Databases</h3>
+                        <p>MySQL, MongoDB, Firebase, SQLite, Oracle</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">💻</div>
+                        <h3>Programming</h3>
+                        <p>Python, Java, C, C++, PHP, HTML, CSS, JavaScript, Embedded C++, Kotlin, ReactJS, Git, SQL</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🔍</div>
+                        <h3>Network Analysis</h3>
+                        <p>Traffic analysis, protocol optimization, network monitoring, troubleshooting methodologies</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🤖</div>
+                        <h3>AI & ML</h3>
+                        <p>YOLOv8, computer vision, machine learning, image recognition, ANPR systems</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🏅</div>
+                        <h3>Certifications</h3>
+                        <p>Introduction to Packet Tracer, CCNA (ongoing), Network Technician (ongoing)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <div class="experience-title">Research & Development Intern</div>
+                    <div class="experience-company">S2R2 Technologies, Pune, INDIA</div>
+                    <div class="experience-date">January 2023 – April 2023</div>
+                    <ul class="experience-details">
+                        <li>Developed and deployed a TCP/IP-enabled web interface for real-time network monitoring, demonstrating hands-on experience in network operations and troubleshooting methodologies.</li>
+                        <li>Reduced system downtime by 10% through advanced network traffic analysis and protocol optimization.</li>
+                        <li>Deployed IoT network solution using ESP32, optimizing network configuration and cross-functional troubleshooting.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="experience-title">Project Intern</div>
+                    <div class="experience-company">Equations Work, Pune, INDIA</div>
+                    <div class="experience-date">June 2023 – April 2024</div>
+                    <ul class="experience-details">
+                        <li>Developed Violation-Eye, an AI-powered traffic violation detection system using YOLOv8, achieving 89.12% accuracy on a 15,000-image dataset.</li>
+                        <li>Engineered an Automatic Number Plate Recognition (ANPR) system that improved violation reporting efficiency by 80% through automated notification mechanisms.</li>
+                        <li>Implemented a scalable web application integrating advanced computer vision and machine learning techniques for real-time traffic violation monitoring.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-grid">
+                <div class="project-item">
+                    <div class="project-title">Enterprise Network Infrastructure Simulation</div>
+                    <div class="project-date">August 2024 - Present</div>
+                    <ul class="project-details">
+                        <li>Designed enterprise network infrastructure simulation in Cisco Packet Tracer, implementing advanced VLAN configuration and topology mapping for 25 network nodes.</li>
+                        <li>Developed Python-based network monitoring script for TCP/IP traffic analysis, performance optimization, and automated service ticket tracking.</li>
+                        <li>Created comprehensive network documentation with topology diagrams and incident management protocols, demonstrating network troubleshooting and optimization strategies.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">Violation Eye – AI Based Traffic Violation System</div>
+                    <div class="project-date">June 2023 – April 2024</div>
+                    <p>IEEE Explore Publication - Team Leader</p>
+                    <ul class="project-details">
+                        <li>Led a team to develop an AI-powered traffic violation detection system</li>
+                        <li>Implemented YOLOv8 for object detection with 89.12% accuracy</li>
+                        <li>Created ANPR system for automated license plate recognition and reporting</li>
+                    </ul>
+                    <div class="project-links">
+                        <a href="https://github.com/sakshii-patiil/violation-eye" target="_blank" class="project-link">
+                            <span class="project-link-icon">📂</span> GitHub Repository
+                        </a>
+                        <a href="https://ieeexplore.ieee.org/document/10244567" target="_blank" class="project-link">
+                            <span class="project-link-icon">📄</span> IEEE Publication
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item">
+                <div class="education-degree">MS, Computer Engineering (Electrical Engineering)</div>
+                <div class="education-university">Arizona State University, Tempe, AZ</div>
+                <div class="education-date">Expected May 2026</div>
+                <p>GPA: 3.22/4.00</p>
+                <p>Ira A. Fulton Schools of Engineering</p>
+                <p>Relevant coursework: Wireless Network, Broadband networks, Communication networks</p>
+            </div>
+            
+            <div class="education-item" style="margin-top: 2rem;">
+                <div class="education-degree">Bachelors, Computer Engineering</div>
+                <div class="education-university">Savitribai Phule Pune University, Pune, INDIA</div>
+                <div class="education-date">May 2024</div>
+                <p>GPA: 3.61/4.00</p>
+                <p>Marathwada Mitra Mandal College of Engineering</p>
+                <p>Relevant coursework: Computer Networks, Advance computer network security, Object oriented programming</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:spati164@asu.edu">spati164@asu.edu</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📱</div>
+                    <h3>Phone</h3>
+                    <p>(602)-807-3178</p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">👥</div>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://linkedin.com/in/sakshii-patiil" target="_blank">linkedin.com/in/sakshii-patiil</a></p>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💻</div>
+                    <h3>GitHub</h3>
+                    <p><a href="https://sakshii-patiil.github.io/Portfolio" target="_blank">sakshii-patiil.github.io/Portfolio</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sakshi Swapnil Patil. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Create network animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const networkBg = document.getElementById('network-animation');
+            const width = networkBg.offsetWidth;
+            const height = networkBg.offsetHeight;
+            
+            // Create 15 network nodes
+            for (let i = 0; i < 15; i++) {
+                const node = document.createElement('div');
+                node.className = 'network-node';
+                
+                // Random position
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                
+                node.style.left = `${x}px`;
+                node.style.top = `${y}px`;
+                networkBg.appendChild(node);
+                
+                // Create 3 lines from each node
+                for (let j = 0; j < 3; j++) {
+                    const line = document.createElement('div');
+                    line.className = 'network-line';
+                    
+                    // Random angle and length
+                    const angle = Math.random() * 360;
+                    const length = 50 + Math.random() * 150;
+                    
+                    line.style.width = `${length}px`;
+                    line.style.left = `${x}px`;
+                    line.style.top = `${y}px`;
+                    line.style.transform = `rotate(${angle}deg)`;
+                    
+                    // Random animation delay
+                    line.style.animationDelay = `${Math.random() * 4}s`;
+                    
+                    networkBg.appendChild(line);
+                }
+            }
+            
+            // Smooth scroll for navigation
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE HTML>
 
 <html>
 	<head>
@@ -258,4 +926,4 @@
 			<script src="assets/js/main.js"></script>
 
 	</body>
-</html>
+</html> -->
